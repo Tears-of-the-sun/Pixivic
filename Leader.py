@@ -127,8 +127,6 @@ def main(hs_mc, date, ider):
             import Saver
             sleep(1)
             Saver.download(dicts, tp_header, setting2)
-    else:
-        print('参数有误')
 
 
 def datelist(start, end):
