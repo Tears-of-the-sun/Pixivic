@@ -1,0 +1,33 @@
+# 用 --- 分隔， = 的 后面和前面要有一个空格
+# 第一 图片下载头
+# 第二 排行数据设置
+# 第三 画师图片抓取设置
+# 自动登录采用账号密码， 具体路径在 最后 修改, 图片暂时只能人工
+---
+authority: pix.ipv4.host
+method: GET
+path: /artists/1023317/illusts/illust?page=1&pageSize=10&maxSanityLevel=3
+scheme: https
+accept: application/json, text/plain, */*
+accept-encoding: gzip, deflate, br
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+authorization: eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uTGV2ZWwiOjEsInJlZnJlc2hDb3VudCI6MiwiaXNDaGVja1Bob25lIjoxLCJ1c2VySWQiOjgwMDI4NSwiaWF0IjoxNjE4NTU2MDk3LCJleHAiOjE2MTkwNzQ0OTd9.KgjtzSCSKc8te5govl86IviqFyEjKr8Di79qFvokHENdSlytfALc4BMjSJyU3H_v47aJUB_gwgaOdrtUD7ISBw
+origin: https://sharemoe.net
+referer: https://sharemoe.net/
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.75
+---
+ph_page = 10  # 抓取排行榜直到第几页
+date = 2021-04-07  # 日期，具体参数可以指令提供
+pagesize = 10  # 抓取页面的大小，可修改但不一定抓取得到
+mode = day  # 日榜
+---
+hs_page = 1  # 抓取画师作品直到第几页
+pagesize = 10  # 同理，抓取数据的大小
+max = 3  # 未知参数，类似等级什么的
+save_path = ./Pixivic  # 图片保存位置
+---
+username = 11894583@qq.com
+password = 1216789
