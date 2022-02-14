@@ -1,8 +1,9 @@
 # 用 --- 分隔， = 的 后面和前面要有一个空格
-# 第一 图片下载头
+# 第一 图片下载头，爬虫运行提示修改请及时联系本人或自行抓包
 # 第二 排行数据设置
 # 第三 画师图片抓取设置
-# 自动登录采用账号密码， 具体路径在 最后 修改, 图片暂时只能人工
+# 不太建议修改这些数据(路径除外),由于目前pixivic要登录才能看图片，请求头具有时效性。
+# 8个月前写的代码，写的很垃圾，能用也很快，别喷我，数据库可能不太好用但是下载到本地没啥问题。
 ---
 authority: pix.ipv4.host
 method: GET
@@ -11,7 +12,7 @@ scheme: https
 accept: application/json, text/plain, */*
 accept-encoding: gzip, deflate, br
 accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
-authorization: eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uTGV2ZWwiOjEsInJlZnJlc2hDb3VudCI6MiwiaXNDaGVja1Bob25lIjoxLCJ1c2VySWQiOjgwMDI4NSwiaWF0IjoxNjE4NTU2MDk3LCJleHAiOjE2MTkwNzQ0OTd9.KgjtzSCSKc8te5govl86IviqFyEjKr8Di79qFvokHENdSlytfALc4BMjSJyU3H_v47aJUB_gwgaOdrtUD7ISBw
+authorization:eyJhbGciOiJIUzUxMiJ9.eyJwZXJtaXNzaW9uTGV2ZWwiOjEsInJlZnJlc2hDb3VudCI6MSwiaXNDaGVja1Bob25lIjoxLCJ1c2VySWQiOjgwMDI4NSwiaWF0IjoxNjQ0ODA4Nzg0LCJleHAiOjE2NDUxNTQzODR9.QpK0GORYrUkowThWnU8ywXeBjilww4J1nHA_0TOTvbZCElDskzreLgAhkan3Gjm6vnkcuaYQ2Ae8cOPe-AtIpA
 origin: https://sharemoe.net
 referer: https://sharemoe.net/
 sec-fetch-dest: empty
@@ -19,15 +20,29 @@ sec-fetch-mode: cors
 sec-fetch-site: cross-site
 user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36 Edg/89.0.774.75
 ---
-ph_page = 10  # 抓取排行榜直到第几页
+ph_page = 10  # 抓取排行榜直到第几页，不建议太高，推荐1-10
 date = 2021-04-07  # 日期，具体参数可以指令提供
-pagesize = 10  # 抓取页面的大小，可修改但不一定抓取得到
+pagesize = 10  # 抓取页面的大小，可修改但不一定抓取的到，推荐10或30
 mode = day  # 日榜
 ---
-hs_page = 1  # 抓取画师作品直到第几页
-pagesize = 10  # 同理，抓取数据的大小
-max = 3  # 未知参数，类似等级什么的
-save_path = ./Pixivic  # 图片保存位置
+hs_page = 2  # 抓取画师和画师的作品直到第几页,推荐1到2
+pagesize = 30  # 同理，抓取数据的大小，推荐10或30
+max = 3  # 未知参数，类似等级什么的，建议不改
+save_path = ./Pixivic  # 图片保存位置,务必填入正确的存在的路径,这是所有下载图片的根路径
+dir_have_pass = 0  # 如果目录存在就跳过画师，0跳过，1不跳过.   0好处是下载重复的图片可能性更低且更节省时间，但如果画师更新了，更新的下不下来
 ---
-username = 11894583@qq.com
-password = 1216789
+Type = illust
+searchType = original    # 原画
+maxSanityLevel = 3
+page = 3  # 关键词搜索深度
+pageSize = 30  # 每页的搜索大小， 可修改但不一定抓取的到，推荐10或30
+---
+mysql_host = localhost  # 数据库地址
+username = root  # 登录数据库的用户
+password = 123456  # 用户密码
+port = 3306  # 数据库端口
+database = pixivic  # mysql数据库库名
+---
+table = pictures  # 使用的表名
+insert_1 = name  # 图片名字字段
+insert_2 = value  # 图片数据字段
